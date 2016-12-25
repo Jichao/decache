@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 #include <sys/mman.h>
 #include <syslog.h>
@@ -50,7 +51,7 @@
 		syslog(5, fmt, ##__VA_ARGS__); \
 		fprintf(stdout, fmt "\n", ##__VA_ARGS__); \
 	}
-	
+
 #define CommonLog(fmt, ...) \
 	{ \
 		syslog(5, "%s/%d: " fmt, __FUNCTION__, __LINE__, ##__VA_ARGS__); \
@@ -68,5 +69,3 @@
 	{ \
 		CommonLog_old("%s %s %d", __FILE__, __FUNCTION__, __LINE__); \
 	}
-
-
